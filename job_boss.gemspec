@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{Asyncronous, parallel job processing}
   s.description = %q{job_boss allows you to queue jobs which are unqueued by a "Job Boss" daemon and handed off to workers to process}
 
-  s.required_rubygems_version = ">= 2.2.2"
+  s.required_rubygems_version = ">= 1.3.6"
 
   s.add_dependency "activerecord"
   s.add_dependency "activesupport"
