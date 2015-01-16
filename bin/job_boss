@@ -28,7 +28,7 @@ Daemons.run_proc('job_boss', daemons_options) do
 
   if File.exist?('config/environment.rb')
     boss.logger.info "Requiring 'config/environment.rb'"
-    require 'config/environment'
+    require './config/environment'
   end
 
   at_exit do
