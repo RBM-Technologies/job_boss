@@ -4,7 +4,7 @@ $:.unshift lib unless $:.include?(lib)
 
 Gem::Specification.new do |s|
   s.name        = "job_boss"
-  s.version     = '0.8.0'
+  s.version     = '0.8.1'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Brian Underwood"]
   s.email       = ["ml+job_boss@semi-sentient.com"]
@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.summary     = %q{Asyncronous, parallel job processing}
   s.description = %q{job_boss allows you to queue jobs which are unqueued by a "Job Boss" daemon and handed off to workers to process}
 
-  s.required_rubygems_version = ">= 1.3.6"
+  s.required_rubygems_version = ">= 2.2.2"
 
   s.add_dependency "activerecord"
   s.add_dependency "activesupport"
