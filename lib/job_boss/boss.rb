@@ -2,27 +2,27 @@ require 'active_support'
 
 module JobBoss
   class Boss
-    extend ActiveSupport::Memoizable
 
     class << self
-      extend ActiveSupport::Memoizable
       # Used to set Boss configuration
       # Usage:
       #   Boss.config.sleep_interval = 2
       def config
-        require 'job_boss/config'
-        Config.new
+        @_config ||= begin
+          require 'job_boss/config'
+          Config.new
+        end
       end
-      memoize :config
 
       # Used to queue jobs
       # Usage:
       #   Boss.queue.math.is_prime?(42)
       def queue(attributes = {})
-        require 'job_boss/queuer'
-        Queuer.new(attributes)
+        @_queue ||= begin
+          require 'job_boss/queuer'
+          Queuer.new(attributes)
+        end
       end
-      memoize :queue
 
       # Used to queue jobs
       # Usage:
@@ -50,10 +50,11 @@ module JobBoss
     def logger
       config.log_path = Boss.resolve_path(config.log_path)
 
-      require 'logger'
-      Logger.new(config.log_path)
+      @_logger ||= begin
+        require 'logger'
+        Logger.new(config.log_path)
+      end
     end
-    memoize :logger
 
     def initialize(options = {})
       config.application_root     ||= options[:working_dir]
